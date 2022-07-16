@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8174996038153748887}
   - component: {fileID: 6239628279673894237}
   - component: {fileID: 4707960893113645069}
-  - component: {fileID: 4707960893113645066}
+  - component: {fileID: 3882156037697398218}
   m_Layer: 0
   m_Name: Sony
   m_TagString: Untagged
@@ -101,7 +101,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4707960893113645066
+--- !u!65 &3882156037697398218
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
