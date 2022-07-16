@@ -6,6 +6,7 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
+<<<<<<< HEAD
       value: 070402515657510a5f0a592411755b4417151b7f7f7f716728701f60e4e1623a
       flags: 0
     RecentlyUsedSceneGuid-1:
@@ -33,6 +34,8 @@ EditorUserSettings:
       value: 510406500003595e595f5c7148710f444515417e757d73642c7e1f63e3b4323e
       flags: 0
     RecentlyUsedSceneGuid-9:
+=======
+>>>>>>> parent of 2a61110 (Merge pull request #7 from dommie123/flykes)
       value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
       flags: 0
     vcSharedLogLevel:
