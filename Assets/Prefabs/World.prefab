@@ -48,9 +48,9 @@ GameObject:
   - component: {fileID: 5564761579543346334}
   - component: {fileID: 3285547001625044672}
   - component: {fileID: 4115076316702368618}
-  - component: {fileID: 6021814184301045843}
+  - component: {fileID: 7604210097091243229}
   m_Layer: 3
-  m_Name: Plane (5)
+  m_Name: Wall (West)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,8 +121,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6021814184301045843
-BoxCollider:
+--- !u!64 &7604210097091243229
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,9 +131,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2214712453677783871
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,9 +146,9 @@ GameObject:
   - component: {fileID: 3024316562788944086}
   - component: {fileID: 1330547119578561564}
   - component: {fileID: 3372189020591639099}
-  - component: {fileID: 296310436693770814}
+  - component: {fileID: 425353986532668238}
   m_Layer: 3
-  m_Name: Plane (1)
+  m_Name: Wall (North)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,8 +219,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &296310436693770814
-BoxCollider:
+--- !u!64 &425353986532668238
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -228,9 +229,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
-  m_Center: {x: 0, y: -0.0000076293945, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2232174698698605251
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,9 +244,9 @@ GameObject:
   - component: {fileID: 7260992377975927110}
   - component: {fileID: 2493887759094448830}
   - component: {fileID: 7157601398387223905}
-  - component: {fileID: 5943695981479183612}
+  - component: {fileID: 6405840723676522338}
   m_Layer: 3
-  m_Name: Plane (4)
+  m_Name: Wall (East)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,8 +317,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5943695981479183612
-BoxCollider:
+--- !u!64 &6405840723676522338
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -325,9 +327,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4247701132184964955
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,9 +342,9 @@ GameObject:
   - component: {fileID: 1980119481826891023}
   - component: {fileID: 6605929619455436740}
   - component: {fileID: 8613661052111113157}
-  - component: {fileID: 2703384904317177988}
+  - component: {fileID: 5074473209312348209}
   m_Layer: 3
-  m_Name: Plane (2)
+  m_Name: Wall (South)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,8 +415,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2703384904317177988
-BoxCollider:
+--- !u!64 &5074473209312348209
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -422,9 +425,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
-  m_Center: {x: 0, y: -0.000015258789, z: -0.00000047683716}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &4468844760039759815
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,9 +440,9 @@ GameObject:
   - component: {fileID: 8786951369440335800}
   - component: {fileID: 50713685715675938}
   - component: {fileID: 7204783460617581042}
-  - component: {fileID: 7515401403829056429}
+  - component: {fileID: 2626443119788450765}
   m_Layer: 3
-  m_Name: Plane (3)
+  m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,7 +456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4468844760039759815}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: -13.178823, y: 53.308502, z: -22.674091}
+  m_LocalPosition: {x: -13.178823, y: 52.4, z: -22.674091}
   m_LocalScale: {x: 20, y: 1, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -509,8 +513,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7515401403829056429
-BoxCollider:
+--- !u!64 &2626443119788450765
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -519,9 +523,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &9131424225268985958
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,9 +538,9 @@ GameObject:
   - component: {fileID: 9131424225268985962}
   - component: {fileID: 9131424225268985961}
   - component: {fileID: 9131424225268985960}
-  - component: {fileID: 4802235745347237960}
+  - component: {fileID: 9131424225268985959}
   m_Layer: 3
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -606,8 +611,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4802235745347237960
-BoxCollider:
+--- !u!64 &9131424225268985959
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -616,6 +621,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}

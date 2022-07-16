@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1344646102136246483
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1235164683128722851, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: effect
+      value: Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704372514959310566, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d03853be1c59f8f4aab7b342d93e0df9, type: 2}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.6295748
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5232427
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10.76181
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9172165
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.07061194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.18833737
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.34388518
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -15.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 17.904
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837339375555134857, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 38.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505930769275100979, guid: dfdcebf5d62227549942f115944933e7, type: 3}
+      propertyPath: m_Name
+      value: Dice_Six_Faces Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dfdcebf5d62227549942f115944933e7, type: 3}

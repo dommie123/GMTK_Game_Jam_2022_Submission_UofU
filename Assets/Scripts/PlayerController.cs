@@ -125,10 +125,10 @@ public class PlayerController : MonoBehaviour
                 velocity.x = -Mathf.Sqrt(jumpHeight * -2f * gravity);
                 break;
             case GravitySwitcher.GravityDirection.FORWARD:
-                velocity.z = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                velocity.z = -Mathf.Sqrt(jumpHeight * -2f * gravity);
                 break;
             case GravitySwitcher.GravityDirection.BACKWARD:
-                velocity.z = -Mathf.Sqrt(jumpHeight * -2f * gravity);
+                velocity.z = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 break;
             default:
                 Debug.LogError($"{GravitySwitcher.instance.direction} is not a valid direction!");
@@ -150,9 +150,9 @@ public class PlayerController : MonoBehaviour
             case GravitySwitcher.GravityDirection.RIGHT:
                 return new Vector3(2f, 0, 0);
             case GravitySwitcher.GravityDirection.FORWARD:
-                return new Vector3(0, 0, -2f);
-            case GravitySwitcher.GravityDirection.BACKWARD:
                 return new Vector3(0, 0, 2f);
+            case GravitySwitcher.GravityDirection.BACKWARD:
+                return new Vector3(0, 0, -2f);
             default:
                 return new Vector3(0, 0, 0);   
         }
@@ -171,9 +171,9 @@ public class PlayerController : MonoBehaviour
             case GravitySwitcher.GravityDirection.RIGHT:
                 return new Vector3(-gravity, 0, 0);
             case GravitySwitcher.GravityDirection.FORWARD:
-                return new Vector3(0, 0, gravity);
-            case GravitySwitcher.GravityDirection.BACKWARD:
                 return new Vector3(0, 0, -gravity);
+            case GravitySwitcher.GravityDirection.BACKWARD:
+                return new Vector3(0, 0, gravity);
             default:
                 return new Vector3(0, 0, 0);   
         }
@@ -192,9 +192,9 @@ public class PlayerController : MonoBehaviour
             case GravitySwitcher.GravityDirection.RIGHT:
                 return new Vector3(0, 0, 90);
             case GravitySwitcher.GravityDirection.FORWARD:
-                return new Vector3(90, 0, 0);
-            case GravitySwitcher.GravityDirection.BACKWARD:
                 return new Vector3(-90, 0, 0);
+            case GravitySwitcher.GravityDirection.BACKWARD:
+                return new Vector3(90, 0, 0);
             default:
                 return new Vector3(0, 0, 0);   
         }
@@ -213,11 +213,12 @@ public class PlayerController : MonoBehaviour
             case GravitySwitcher.GravityDirection.RIGHT:
                 return velocity.x > 0;
             case GravitySwitcher.GravityDirection.FORWARD:
-                return velocity.z < 0;
-            case GravitySwitcher.GravityDirection.BACKWARD:
                 return velocity.z > 0;
+            case GravitySwitcher.GravityDirection.BACKWARD:
+                return velocity.z < 0;
             default:
                 return false;   
         }
     }
 }
+
