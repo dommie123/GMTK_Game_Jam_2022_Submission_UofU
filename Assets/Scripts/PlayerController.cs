@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 movement = transform.right * x + transform.forward * z;
 
-        controller.Move(movement * speed * Time.deltaTime);
+        controller.Move(movement * (speed + PlayerStatics.instance.speedModifier) * Time.deltaTime);
     }
 
     private void UpdateRotation()
@@ -186,20 +186,21 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetGravityVector()
     {
+        float moddedGravity = gravity - PlayerStatics.instance.gravityModifier;   
         switch (GravitySwitcher.instance.direction)
         {
             case GravitySwitcher.GravityDirection.UP:
-                return new Vector3(0, -gravity, 0);
+                return new Vector3(0, -moddedGravity, 0);
             case GravitySwitcher.GravityDirection.DOWN:
-                return new Vector3(0, gravity, 0);
+                return new Vector3(0, moddedGravity, 0);
             case GravitySwitcher.GravityDirection.LEFT:
-                return new Vector3(gravity, 0, 0);
+                return new Vector3(moddedGravity, 0, 0);
             case GravitySwitcher.GravityDirection.RIGHT:
-                return new Vector3(-gravity, 0, 0);
+                return new Vector3(-moddedGravity, 0, 0);
             case GravitySwitcher.GravityDirection.FORWARD:
-                return new Vector3(0, 0, -gravity);
+                return new Vector3(0, 0, -moddedGravity);
             case GravitySwitcher.GravityDirection.BACKWARD:
-                return new Vector3(0, 0, gravity);
+                return new Vector3(0, 0, moddedGravity);
             default:
                 return new Vector3(0, 0, 0);   
         }

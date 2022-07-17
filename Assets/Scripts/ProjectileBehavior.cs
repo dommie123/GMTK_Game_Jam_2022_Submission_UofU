@@ -33,11 +33,6 @@ public class ProjectileBehavior : MonoBehaviour
     {
         Destroy(gameObject, 0);
 
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Got the enemy!");
-            EnemyHealthManager.instance.ApplyDamage(damage);
-        }
         if (other.gameObject.tag == "Player")
         {
             HealthManager.instance.ApplyDamage(damage);

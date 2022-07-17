@@ -18,7 +18,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float timer;
     private Vector3 patrolPoint;
+    private EnemyHealthManager health;
 
+    public DiceSpawner diceSpawner;
     public Transform playerCheck;
     public GameObject attackSphere;
     public EnemyState currentState;
@@ -27,7 +29,14 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        diceSpawner.gameObject.SetActive(false);
         attackSphere.SetActive(false);
+
+        health = GetComponent<EnemyHealthManager>();
+        timer = 0;
+
+        SetNewPatrolPoint();
+
     }
 
     // Update is called once per frame
@@ -37,8 +46,18 @@ public class EnemyController : MonoBehaviour
         UpdateState();   
     }
 
+    private void OnCollisionEnter(Collision other) 
+    {
+        if (other.gameObject.tag == "Hazard")
+        {
+            health.ApplyDamage(1);
+            Debug.Log("Got the enemy!");
+        }
+    }
+
     void CheckState()
     {
+        Debug.Log(currentState);
         switch (currentState) {
             case EnemyState.Patrolling:
                 Patrol();
@@ -82,11 +101,7 @@ public class EnemyController : MonoBehaviour
         // After 10 seconds or player has reached patrol point, pick a new patrol point.
         if ((timer % 10 == 0 && timer > 0) || Vector3.Distance(transform.position, patrolPoint) <= 0.1f)
         {
-            float newX = Random.Range(-100, 100);
-            float newY = Random.Range(-100, 100);
-            float newZ = Random.Range(-100, 100);
-
-            patrolPoint = new Vector3(newX, newY, newZ);
+            SetNewPatrolPoint();
 
             timer = 0;
         }
@@ -100,10 +115,11 @@ public class EnemyController : MonoBehaviour
     void MoveTowardsPlayer()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        LookAtPoint(player.transform.position);
+        //LookAtPoint(player.transform.position);
     }
     void Die()
     {
+        diceSpawner.gameObject.SetActive(true);
         Destroy(gameObject, 0);
         // TODO spawn die from enemy & special effects
     }
@@ -120,5 +136,14 @@ public class EnemyController : MonoBehaviour
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
 
         transform.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    private void SetNewPatrolPoint()
+    {
+        float newX = Random.Range(-100, 100);
+        float newY = Random.Range(-100, 100);
+        float newZ = Random.Range(-100, 100);
+
+        patrolPoint = new Vector3(newX, newY, newZ);
     }
 }

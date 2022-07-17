@@ -17,7 +17,7 @@ public class GravitySwitcher : MonoBehaviour
 
     public GravityDirection direction;
     public static GravitySwitcher instance;
-    // Start is called before the first frame update
+    public float currentGravity;
     private float currentTime;
 
     void Awake() 
@@ -25,6 +25,7 @@ public class GravitySwitcher : MonoBehaviour
         instance = this;
         currentTime = 0f;
         direction = GravityDirection.DOWN; 
+        currentGravity = 9.81f;
     }
 
     // Update is called once per frame
@@ -47,22 +48,22 @@ public class GravitySwitcher : MonoBehaviour
         // Update Physics.gravity according to the currently specified direction.
         switch (direction) {
             case GravityDirection.DOWN:
-                Physics.gravity = new Vector3(0, -9.81f, 0);
+                Physics.gravity = new Vector3(0, -currentGravity, 0);
                 break;
             case GravityDirection.UP:
-                Physics.gravity = new Vector3(0, 9.81f, 0);
+                Physics.gravity = new Vector3(0, currentGravity, 0);
                 break;
             case GravityDirection.LEFT:
-                Physics.gravity = new Vector3(-9.81f, 0, 0);
+                Physics.gravity = new Vector3(-currentGravity, 0, 0);
                 break;
             case GravityDirection.RIGHT:
-                Physics.gravity = new Vector3(9.81f, 0, 0);
+                Physics.gravity = new Vector3(currentGravity, 0, 0);
                 break;
             case GravityDirection.FORWARD:
-                Physics.gravity = new Vector3(0, 0, 9.81f);
+                Physics.gravity = new Vector3(0, 0, currentGravity);
                 break;
             case GravityDirection.BACKWARD:
-                Physics.gravity = new Vector3(0, 0, -9.81f);
+                Physics.gravity = new Vector3(0, 0, -currentGravity);
                 break;
             default:
                 Debug.LogError($"{direction} is not a valid direction for gravity!");

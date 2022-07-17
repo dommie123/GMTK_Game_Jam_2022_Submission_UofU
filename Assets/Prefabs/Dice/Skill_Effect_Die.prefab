@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 255873111567566192, guid: 572d456bf81a9e84aa681bff585ceb3f, type: 3}
       propertyPath: effect
-      value: Skill
+      value: Gun
       objectReference: {fileID: 0}
     - target: {fileID: 4876063303629837658, guid: 572d456bf81a9e84aa681bff585ceb3f, type: 3}
       propertyPath: m_RootOrder
