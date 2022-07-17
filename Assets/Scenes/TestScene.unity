@@ -452,6 +452,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerModel
       objectReference: {fileID: 0}
+    - target: {fileID: 2831356083053978132, guid: 61b18caaac3ff374783e4cd5180d0afc, type: 3}
+      propertyPath: fireRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2831356083053978132, guid: 61b18caaac3ff374783e4cd5180d0afc, type: 3}
+      propertyPath: projectileSpawnPoint
+      value: 
+      objectReference: {fileID: 2118336564}
     - target: {fileID: 5350611433412670118, guid: 61b18caaac3ff374783e4cd5180d0afc, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.756
@@ -935,6 +943,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06fc6de750cf35341a52d1827ff36264, type: 3}
+--- !u!4 &2118336564 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5088422764390435929, guid: 61b18caaac3ff374783e4cd5180d0afc, type: 3}
+  m_PrefabInstance: {fileID: 431466423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4396230228477192016
 PrefabInstance:
   m_ObjectHideFlags: 0

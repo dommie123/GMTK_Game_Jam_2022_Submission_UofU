@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private float xRotation;
     private Vector3 playerRotation;
+    private WeaponBehavior weapon;
     public Transform playerCamera;
     public Transform groundCheck;
     public float groundDistance;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         xRotation = 0f;
         Cursor.lockState = CursorLockMode.Locked;
+
+        weapon = playerCamera.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<WeaponBehavior>();
     }
 
     // Update is called once per frame
@@ -125,6 +128,10 @@ public class PlayerController : MonoBehaviour
     {
         // TODO shoot current gun.
         Debug.Log("Firing all weapons!");
+        if (weapon)
+        {
+            weapon.Fire();
+        }
     }
 
     private void Jump()
