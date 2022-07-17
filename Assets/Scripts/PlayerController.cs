@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpHeight;
     [SerializeField] private float mouseSensitivity;
+    [SerializeField] private float interactDistance;
     private Vector3 gravityVector;
     public float gravity;
-
     private Transform playerBody;
     private Vector3 stickToGround;
     private CharacterController controller;
@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
+    public LayerMask storeMask;
+    public int Points {get; set;}
+    public bool IsDead {get; set;}
 
     Vector3 velocity;
     bool isGrounded;
@@ -30,8 +33,6 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         xRotation = 0f;
         Cursor.lockState = CursorLockMode.Locked;
-
-        groundDistance = 0.4f;
     }
 
     // Update is called once per frame
@@ -40,22 +41,22 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         stickToGround = GetGroundVelocity();
         gravityVector = GetGravityVector();
-        //Debug.Log(gravityVector);
 
-        UpdateMovement();
-        UpdateRotation();
         UpdatePhysics();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!PlayerStatics.instance.IsInMenu && !IsDead)
         {
-            Fire();
+            UpdateMovement();
+            UpdateRotation();
+            UpdatePoints();
+
+            RegisterPlayerInputs();
+            if (IsDead)
+            {
+                Debug.Log("Make sure my sacrifice wasn't in vain... *dies*");
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Debug.Log("Jump");
-            Jump();
-        }
     }
 
     private void UpdateMovement()
@@ -100,6 +101,24 @@ public class PlayerController : MonoBehaviour
         }
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void RegisterPlayerInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Fire();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
+        }
     }
 
     private void Fire()
@@ -218,6 +237,23 @@ public class PlayerController : MonoBehaviour
                 return velocity.z < 0;
             default:
                 return false;   
+        }
+    }
+    private void UpdatePoints()
+    {
+        if (Points != PlayerPointWallet.instance.Points)
+        {
+            Points = PlayerPointWallet.instance.Points;
+            Debug.Log($"Player points is now {Points}!");
+        }
+    }
+
+    private void Interact()
+    {
+        if (Physics.Linecast(transform.position, (transform.forward * interactDistance) + transform.position, storeMask))
+        {   
+            Debug.Log($"Shop was hit at coords {(transform.forward * interactDistance) + transform.position}");
+            ShopManager.instance.EnterShop();
         }
     }
 }
