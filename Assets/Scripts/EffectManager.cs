@@ -15,5 +15,13 @@ public class EffectManager : MonoBehaviour
     {
         // TODO boost effect by amount of points.
         Debug.Log($"Boosted {effect} by {points} points!");
+        if (effect == "Gravity")
+        {
+            GravitySwitcher.instance.currentGravity -= (points / 2);
+        }
+        else if (effect == "Player")
+        {
+            PlayerStatics.instance.speedModifier += points;
+        }
     }
 }

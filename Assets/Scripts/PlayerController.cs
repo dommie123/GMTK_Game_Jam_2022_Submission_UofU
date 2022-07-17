@@ -7,18 +7,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpHeight;
     [SerializeField] private float mouseSensitivity;
+    [SerializeField] private float interactDistance;
     private Vector3 gravityVector;
     public float gravity;
-
     private Transform playerBody;
     private Vector3 stickToGround;
     private CharacterController controller;
     private float xRotation;
     private Vector3 playerRotation;
+    private WeaponBehavior weapon;
     public Transform playerCamera;
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
+    public LayerMask storeMask;
+    public int Points {get; set;}
+    public bool IsDead {get; set;}
 
     Vector3 velocity;
     bool isGrounded;
@@ -31,7 +35,7 @@ public class PlayerController : MonoBehaviour
         xRotation = 0f;
         Cursor.lockState = CursorLockMode.Locked;
 
-        groundDistance = 0.4f;
+        weapon = playerCamera.transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<WeaponBehavior>();
     }
 
     // Update is called once per frame
@@ -40,22 +44,22 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         stickToGround = GetGroundVelocity();
         gravityVector = GetGravityVector();
-        //Debug.Log(gravityVector);
 
-        UpdateMovement();
-        UpdateRotation();
         UpdatePhysics();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (!PlayerStatics.instance.IsInMenu && !IsDead)
         {
-            Fire();
+            UpdateMovement();
+            UpdateRotation();
+            UpdatePoints();
+
+            RegisterPlayerInputs();
+            if (IsDead)
+            {
+                Debug.Log("Make sure my sacrifice wasn't in vain... *dies*");
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            Debug.Log("Jump");
-            Jump();
-        }
     }
 
     private void UpdateMovement()
@@ -64,7 +68,7 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         Vector3 movement = transform.right * x + transform.forward * z;
 
-        controller.Move(movement * speed * Time.deltaTime);
+        controller.Move(movement * (speed + PlayerStatics.instance.speedModifier) * Time.deltaTime);
     }
 
     private void UpdateRotation()
@@ -102,10 +106,32 @@ public class PlayerController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    private void RegisterPlayerInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Fire();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Interact();
+        }
+    }
+
     private void Fire()
     {
         // TODO shoot current gun.
         Debug.Log("Firing all weapons!");
+        if (weapon)
+        {
+            weapon.Fire();
+        }
     }
 
     private void Jump()
@@ -160,20 +186,21 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 GetGravityVector()
     {
+        float moddedGravity = gravity - PlayerStatics.instance.gravityModifier;   
         switch (GravitySwitcher.instance.direction)
         {
             case GravitySwitcher.GravityDirection.UP:
-                return new Vector3(0, -gravity, 0);
+                return new Vector3(0, -moddedGravity, 0);
             case GravitySwitcher.GravityDirection.DOWN:
-                return new Vector3(0, gravity, 0);
+                return new Vector3(0, moddedGravity, 0);
             case GravitySwitcher.GravityDirection.LEFT:
-                return new Vector3(gravity, 0, 0);
+                return new Vector3(moddedGravity, 0, 0);
             case GravitySwitcher.GravityDirection.RIGHT:
-                return new Vector3(-gravity, 0, 0);
+                return new Vector3(-moddedGravity, 0, 0);
             case GravitySwitcher.GravityDirection.FORWARD:
-                return new Vector3(0, 0, -gravity);
+                return new Vector3(0, 0, -moddedGravity);
             case GravitySwitcher.GravityDirection.BACKWARD:
-                return new Vector3(0, 0, gravity);
+                return new Vector3(0, 0, moddedGravity);
             default:
                 return new Vector3(0, 0, 0);   
         }
@@ -218,6 +245,23 @@ public class PlayerController : MonoBehaviour
                 return velocity.z < 0;
             default:
                 return false;   
+        }
+    }
+    private void UpdatePoints()
+    {
+        if (Points != PlayerPointWallet.instance.Points)
+        {
+            Points = PlayerPointWallet.instance.Points;
+            Debug.Log($"Player points is now {Points}!");
+        }
+    }
+
+    private void Interact()
+    {
+        if (Physics.Linecast(transform.position, (transform.forward * interactDistance) + transform.position, storeMask))
+        {   
+            Debug.Log($"Shop was hit at coords {(transform.forward * interactDistance) + transform.position}");
+            ShopManager.instance.EnterShop();
         }
     }
 }
